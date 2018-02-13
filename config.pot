@@ -1,0 +1,176 @@
+########################################
+#---------------------------------------
+#-   CONFIG FILE
+#--------------------------------------
+########################################
+
+printConfigInfo = false     #print the imported parameters
+verbose         = true      #print a lot of stuff during the execution
+
+#########################################
+#           Magnetic Field              #
+#########################################
+[MagneticField]
+    debug     = false           # print stuff that could help to find a problem
+    
+#     type      = cartesian       # "cartesian" or "cylindrical"   Type of the grid you will import
+    type      = cylindrical       # "cartesian" or "cylindrical"   Type of the grid you will import
+                                # Parameters used by the specific grid type
+#     gridParam = ' '             # Cartesian   ---> No parameters
+    gridParam = '1000 10000'    # Cylindrical ---> 'radSubs angSubs'
+    
+    #Cartesian analytical
+#     fnGrid = '/home/abele/Polimi/Stage/abele/MapGeneration/map_gen_map.txt'
+#     fnGrid = '/home/abele/Polimi/Stage/abele/MapGeneration/map_gen_map_dz3mm.txt'
+    
+#     fnGrid = '/home/stage/abele/DataAndPotential/vector_potential_cpp/Testing/AnalyticalMaps/map_gen_map_Ran50mm.txt /home/abele/Polimi/Stage/abele/DataAndPotential/vector_potential_cpp/Testing/AnalyticalMaps/map_gen_map_Ran50mm.txt'
+    #Cartesian CERN dz = 0.003 m
+#     fnGrid = '/home/abele/Polimi/Stage/abele/DataAndPotential/gradients_new/MQXF_V3_return_tot.txt_tot_shift_2s_sorted /home/stage/abele/DataAndPotential/gradients_new/MQXF_V3_return_tot.txt_tot_shift_2s_sorted'
+    #Cylindrical analytical 50mm
+    fnGrid = '/home/abele/Polimi/Stage/abele/DataAndPotential/vector_potential_cpp/Testing/AnalyticalMaps/map_cyl_gen_map_Ran50mm.txt /home/stage/abele/DataAndPotential/vector_potential_cpp/Testing/AnalyticalMaps/map_cyl_gen_map_Ran50mm.txt'
+    
+    #Cylindrical analytical 51mm
+#     fnGrid = '/home/abele/Polimi/Stage/abele/DataAndPotential/vector_potential_cpp/Testing/AnalyticalMaps/map_cyl_gen_map_Ran51mm.txt /home/stage/abele/DataAndPotential/vector_potential_cpp/Testing/AnalyticalMaps/map_cyl_gen_map_Ran51mm.txt'
+    
+    interp    = HermiteSpline   # Type of interpolator used for the magnetic field
+    interpPar = ' '              # Parameters used in the interpolation method (important, if NO parameters KEEP the space i.e. ' ')
+[]
+
+#########################################
+#               Harmonics               #
+#########################################
+[Harmonics]
+    debug          = false          # print stuff that could help to find a problem and also magnetic length L0
+    radiusAnalysis = 0.050           # Radius at which we will compute (or it's already computed) the harmonics' analysis
+#   selectedHarmo  = '6 10 14'    # Harmonics that we want to consider 
+    selectedHarmo  = '2 6 10 14'    # Harmonics that we want to consider 
+#    selectedHarmo  = '2'    # Harmonics that we want to consider 
+    
+    magLenQMethod = NCComp    # Method used to compute the magnetic length
+    magLenQParam  = '2'       # List of parameters used by the specific method
+    
+    [./Importing]
+    #Nb3Sn Harmonics
+#     fnNormal = '/home/abele/Polimi/Stage/abele/MapGeneration/map_gen_bnr_Ran50mm_dz03mm_long.out'
+#     fnNormal = '/home/abele/tmp/PACSProj/Testing/AnalyticCart/map_gen_bnr.out'
+#     fnNormal = '/home/abele/tmp/PACSProj/Testing/CERN_Old_Grid/harmo_BnR.out'
+#      fnNormal = '/home/abele/Polimi/Tesi/MatlabCode/4DCase/b2_exact_2mm.txt'
+#     fnNormal = '/home/abele/Polimi/Tesi/MatlabCode/4DCase/b2_from_spline20mm_2mm.txt'
+#      fnNormal = '/home/abele/Polimi/Stage/abele/SixTrack_Stuff/bn_1504_QXF_FringeField_inom_7TevM.txt /home/stage/abele/SixTrack_Stuff/bn_1504_QXF_FringeField_inom_7TevM.txt'
+#       fnNormal = '/home/abele/Polimi/Stage/abele/SixTrack_Stuff/bn_1504_QXF_FringeField_inom_7TevM_ref_2mm.txt /home/stage/abele/SixTrack_Stuff/bn_1504_QXF_FringeField_inom_7TevM_ref_2mm.txt'
+#         fnNormal = '/home/abele/Polimi/Stage/abele/DataAndPotential/CERN_Old_Grid_Harmonics/bnr_dz3mm.txt'
+#         fnNormal = '/home/abele/Polimi/Stage/abele/DataAndPotential/CERN_Old_Grid_Harmonics/OLD_CERN_refined_harmo.out'
+      fnNormal = '/home/bdalena/HL-LHC/AbeleThomas/New_harmo_for_Barbara/edit_harmonics.dat'
+#      fnNormal = '/home/abele/Polimi/Tesi/MatlabCode/Nb3Sn/pert_dz20mm_0010/pert_harmo.dat'
+#      fnNormal = '/home/abele/Polimi/Tesi/MatlabCode/Nb3Sn/edit_harmonics_ref.dat'
+
+#      fnNormal = '/home/abele/Polimi/Tesi/MatlabCode/oldCERN/edit_harmonics_dz0.003.dat'
+        
+#        fnSkew   = '/home/bdalena/HL-LHC/Abele/an_1504_QXF_FringeField_inom_7TevM_upToA6.txt'
+    #Old Harmonics
+#        fnNormal = '/home/stage/abele/DataAndPotential/vector_potential_cpp/Testing/CERN_Old_Grid/harmo_BnR.out /home/abele/Polimi/Stage/abele/DataAndPotential/vector_potential_cpp/Testing/CERN_Old_Grid/harmo_BnR.out'
+#        fnSkew   = '/home/abele/Polimi/Stage/abele/SixTrack_Stuff/an_1504_QXF_FringeField_inom_7TevM_upToA6.txt /home/stage/abele/SixTrack_Stuff/an_1504_QXF_FringeField_inom_7TevM_upToA6.txt'
+    
+    #Analytical cartesian harmonics
+#         fnNormal = '/home/stage/abele/DataAndPotential/vector_potential_cpp/Testing/AnalyticalMaps/map_gen_bnr_Ran50mm.out /home/abele/Polimi/Stage/abele/DataAndPotential/vector_potential_cpp/Testing/AnalyticalMaps/map_gen_bnr_Ran50mm_dz03mm_long.out'
+#         fnSkew   = '/home/abele/Polimi/Stage/abele/SixTrack_Stuff/an_1504_QXF_FringeField_inom_7TevM_upToA6.txt /home/stage/abele/SixTrack_Stuff/an_1504_QXF_FringeField_inom_7TevM_upToA6.txt'
+
+    #Analytical cylindrical harmonics 51mm
+#         fnNormal = '/home/stage/abele/DataAndPotential/vector_potential_cpp/Testing/AnalyticalMaps/map_cyl_gen_bnr_Ran51mm.out /home/abele/Polimi/Stage/abele/DataAndPotential/vector_potential_cpp/Testing/AnalyticalMaps/map_cyl_gen_bnr_Ran51mm.out'
+#         fnSkew   = '/home/abele/Polimi/Stage/abele/SixTrack_Stuff/an_1504_QXF_FringeField_inom_7TevM_upToA6.txt /home/stage/abele/SixTrack_Stuff/an_1504_QXF_FringeField_inom_7TevM_upToA6.txt'
+        
+    #Analytical cylindrical harmonics 50mm
+#         fnNormal = '/home/stage/abele/DataAndPotential/vector_potential_cpp/Testing/AnalyticalMaps/map_cyl_gen_bnr_Ran50mm.out /home/abele/Polimi/Stage/abele/DataAndPotential/vector_potential_cpp/Testing/AnalyticalMaps/map_cyl_gen_bnr_Ran50mm.out'
+#         fnSkew   = '/home/abele/Polimi/Stage/abele/SixTrack_Stuff/an_1504_QXF_FringeField_inom_7TevM_upToA6.txt /home/stage/abele/SixTrack_Stuff/an_1504_QXF_FringeField_inom_7TevM_upToA6.txt'
+    
+    [../Computing]
+        numHarmo   = 14             # Number of harmonics we want to compute
+        
+        numCircSub = 50        # Number of circle subdivisions
+        
+        FIMethod = NCCompFI # Method to compute Fourier Intergrals
+        FIParam  = '1'      # Depending on the method a list of specific parameters 
+        
+    [../Editing]
+        oppSign = false    # reverse harmonics respect to z axis
+        invertZ = false    # reverse harmonics respect to z=zCent
+        #zCent   = -0.231   # indicate the center of harmonics
+        zCent   = 0.0        # indicate the center of harmonics
+        
+        meanIntNPts = 0       # mean z values to reduce the number of points (cell's size in number of points)
+        QMethod     = NCComp  #Method used to compute the cell mean
+        QParam      = '2'     #List of parameters for the specific method
+    
+        centHarmo  = false                          #----->??? is needed
+        symmetrize = no         #symmetrize harmonics respect to zCent "right", "left" or "no"   #----->??? is needed
+
+        numPtsBound = 0     # Add artificial points to the boundaries allowing to treat the harmonics as z-periodic
+[]
+
+#########################################
+#               Gradients               #
+#########################################
+[Gradients]
+    debug = false      # print stuff that could help to find a problem
+    [./Computing] 
+        numDeriv    = 16 
+        # Max number of gradients derivatives
+        numFreqSamp = 10000    # Number of frequencies subdivisions (for Fourier Transform)
+        
+#       FTMethod = NCCompFT
+        FTMethod = FFTFT # Method to compute harmonics Fourier transform (FFTFT NCCompFT FilonSplineFT)
+#        FTMethod = FilonSplineFT
+        FTParam          = '1'          #Depending on the method a list of specific parameters 
+        
+[]
+
+#########################################
+#   Coefficients Vector Potential       #
+#########################################
+[VectPotCoeff]
+    debug       = false      # print stuff that could help to find a problem
+    isIn        = true       # consider the smallest z
+    isOut       = false      # consider the biggest z
+#    superpos    = 0.0437    # size of the superposition between two quadrupoles
+    superpos    = 0.0        # size of the superposition between two quadrupoles
+    prodMid     = false      # consider the superposition part
+    ptsIgnBound = 0          # ignore some point at the boundary
+    plotRes     = true       # plot some result
+    meanIntNPts = 5          # mean z values to reduce the number of points
+    QMethod     = NCComp     # Method used to compute the cell mean
+    QParam      = '2'        # List of parameters for the specific method
+    prodDzDeriv = 0          # Set how much vector potential dz derivatives compute 0, 1 or 2 
+    gaugeType   = AF         # Gauge type (AF, SC or HFC)
+[]
+
+#########################################
+#            Plot options               #
+#########################################
+[PlotOptions]
+    genPtColor     = blue               # color of a generic grid point 
+    posBZPtColor   = green              # color of grid points where B_z >= 0 
+    negBZPtColor   = red                # color of grid points where B_z < 0 
+    nullBZPtColor  = black              # color of grid points where |B_z| < epsilon
+    bXVecColor     = blue               # color of the vector rappresenting B_x 
+    bYVecColor     = magenta            # color of the vector rappresenting B_y 
+    ptSize         = 0.75               # size of a generic grid point
+    unitZ          = m                  # measure unit for length
+    unitB          = T                  # measure unit of the B field
+    autoscale      = true               # If true minRatio will be used else scaleRatio will be used
+    minRatio       = 0.2e-1             # If the ratio between the max of two lines in a plot is smaller than this value
+                                        # the smaller is represented bigger 
+    sigDigits      = 1                  # Number of digits different from 0 used in the autoscale process
+    scaleRatio     = '1 20 50 100'      # Indicates how to scale the lines in plots
+    expPlotCfrGrid = true               # True if you want to export the plotFiles for Latex
+    plotCfrGridFn  = Nb3Sn              # the filename of expPlotCfrGrid (if the previsious option is true)
+    showPlots      = true               # show plots with GNUplot
+    termType       = qt\ enhanced      # GnuPlot terminal type "qt", "qt\ enhanced", "x11", "wxt", etc
+[]
+
+
+
+
+
+
+
+
