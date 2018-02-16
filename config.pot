@@ -138,7 +138,7 @@ verbose         = true      #print a lot of stuff during the execution
     plotRes     = true       # plot some result
     meanIntNPts = 5          # mean z values to reduce the number of points
     QMethod     = NCComp     # Method used to compute the cell mean
-    QParam      = '2'        # List of parameters for the specific method
+    QParam      = '4'        # List of parameters for the specific method
     prodDzDeriv = 0          # Set how much vector potential dz derivatives compute 0, 1 or 2 
     gaugeType   = AF         # Gauge type (AF, SC or HFC)
 []
